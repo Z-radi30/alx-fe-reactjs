@@ -1,72 +1,79 @@
-// src/components/RegistrationForm.js
-import React, { useState } from 'react';
-
-function RegistrationForm() {
-  // Initialize state for form fields
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  
-  // State for form errors
+import React, { useState } from "react";
+import FormikForm from "./formikFrom";
+const RegistrationForm = () => {
+  // States for form fields
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  // State to hold error messages
   const [errors, setErrors] = useState({});
 
-  // Function to handle form submission
+  const validateForm = () => {
+    const newErrors = {};
+    // Validation checks
+    if (!username) newErrors.username = "Username is required";
+    if (!email) newErrors.email = "Email is required";
+    if (!password) newErrors.password = "Password is required";
+    // Additional validation can be added here
+
+    setErrors(newErrors);
+    // Return true if no errors
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
+    // Clear previous errors
+    setErrors({});
 
-    // Basic validation
-    let tempErrors = {};
-    if (!username.trim()) tempErrors.username = "Username is required";
-    if (!email.trim()) tempErrors.email = "Email is required";
-    if (!password.trim()) tempErrors.password = "Password is required";
-
-    setErrors(tempErrors);
-
-    // Proceed only if there are no errors
-    if (Object.keys(tempErrors).length === 0) {
-      // Here you would typically send the data to a server
-      alert(`User registered: ${username}, ${email}, ${password}`);
+    // Validate form before submitting
+    if (validateForm()) {
+      console.log({ username, email, password, confirmPassword });
+      // Proceed with submitting data to a server or handling it accordingly
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label>Username:</label>
-        <input 
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          className={errors.username ? 'error' : ''}
-        />
-        {errors.username && <p>{errors.username}</p>}
-      </div>
+      <label htmlFor="username">Username*</label>
+      <input
+        id="username"
+        type="text"
+        value={username}
+        onChange={(event) => setUsername(event.target.value)}
+      />
+      {errors.username && <div style={{ color: "red" }}>{errors.username}</div>}
 
-      <div>
-        <label>Email:</label>
-        <input 
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className={errors.email ? 'error' : ''}
-        />
-        {errors.email && <p>{errors.email}</p>}
-      </div>
+      <label htmlFor="email">Email*</label>
+      <input
+        id="email"
+        type="email"
+        value={email}
+        onChange={(event) => setEmail(event.target.value)}
+      />
+      {errors.email && <div style={{ color: "red" }}>{errors.email}</div>}
 
-      <div>
-        <label>Password:</label>
-        <input 
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className={errors.password ? 'error' : ''}
-        />
-        {errors.password && <p>{errors.password}</p>}
-      </div>
+      <label htmlFor="password">Password*</label>
+      <input
+        id="password"
+        type="password"
+        value={password}
+        onChange={(event) => setPassword(event.target.value)}
+      />
+      {errors.password && <div style={{ color: "red" }}>{errors.password}</div>}
 
-      <button type="submit">Register</button>
+      <label htmlFor="confirmPassword">Confirm password*</label>
+      <input
+        id="confirmPassword"
+        type="password"
+        value={confirmPassword}
+        onChange={(event) => setConfirmPassword(event.target.value)}
+      />
+
+      <button type="submit">Sign up</button>
     </form>
   );
-}
+};
 
 export default RegistrationForm;

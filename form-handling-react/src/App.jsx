@@ -1,15 +1,17 @@
-// src/App.js
-import React from 'react';
-import './App.css';
-import RegistrationForm from './components/RegistrationForm';
-import FormikForm from './components/formikForm';
+import React from "react";
+import RegistrationForm from "./components/RegistrationForm";
+import "./components/style.css";
 
 function App() {
   return (
     <div className="App">
-      <h1>User Registration</h1>
-      <RegistrationForm />
-      <FormikForm />
+      <main>
+        <h1>Register Alx</h1>
+        <p>
+          Sign up or <a href="#">sign in to your account</a>
+        </p>
+        <RegistrationForm />
+      </main>
     </div>
   );
 }
