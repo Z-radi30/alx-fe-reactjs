@@ -1,6 +1,13 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import PostsComponent from "./components/PostsComponent";
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Profile from './components/Profile'; // The Profile component you just created
+import ProfileDetails from './components/ProfileDetails';
+import ProfileSettings from './components/ProfileSettings';
+
+
+
+
 
 function App() {
 // Example components for routing
@@ -20,6 +27,7 @@ const Dashboard = () => <h2>Dashboard</h2>;
           <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/dashboard">Dashboard</Link></li>
+          <li><Link to="/profile">Profile</Link></li>
         </ul>
       </nav>
 
@@ -27,6 +35,11 @@ const Dashboard = () => <h2>Dashboard</h2>;
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/profile" element={<profile />} />
+        {/* Nested Routes */}
+        <Route path="details" element={<Profile />} />
+        <Route path="details" element={<ProfileDetails />} />
+        <Route path="settings" element={<ProfileSettings />} />
       </Routes>
     </Router>
 
