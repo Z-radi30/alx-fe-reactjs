@@ -1,40 +1,28 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Home from './components/Home';
-import About from './components/About';
-import Profile from './components/Profile';
-import BlogPost from './components/BlogPost';
-import Dashboard from './components/Dashboard'; // Assuming you have a Dashboard component
-import Login from './components/Login'; // Assuming you have a Login component
-import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import Profile from "./components/Profile";
+import NotFound from "./components/NotFound";
+import ProtectedRoute from "./components/ProtectedRoute";
+import BlogPost from "./components/BlogPost";
 
 function App() {
+  const isAuthenticated = false;
+
   return (
     <Router>
-      <nav>
-        <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/profile">Profile</Link></li>
-          <li><Link to="/blog/1">Blog Post 1</Link></li>
-          <li><Link to="/dashboard">Dashboard</Link></li> {/* Protected route */}
-        </ul>
-      </nav>
-
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/profile/*" element={<Profile />} />
-        <Route path="/blog/:id" element={<BlogPost />} />
-        <Route path="/login" element={<Login />} />
         <Route
-          path="/dashboard"
+          path="/profile/*"
           element={
-            <ProtectedRoute>
-              <Dashboard />
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <Profile />
             </ProtectedRoute>
           }
         />
+        <Route path="/blog/:id" element={<BlogPost />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );

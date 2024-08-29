@@ -1,12 +1,8 @@
-import React from 'react';
+// ProfileDetails.jsx
+import React from "react";
 
 function ProfileDetails() {
-  return (
-    <div>
-      <h3>Profile Details</h3>
-      <p>Here are the details of your profile.</p>
-    </div>
-  );
+  return <div>Profile Details</div>;
 }
 
 export default ProfileDetails;

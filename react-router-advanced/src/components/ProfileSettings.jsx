@@ -1,12 +1,8 @@
-import React from 'react';
+// ProfileSettings.jsx
+import React from "react";
 
 function ProfileSettings() {
-  return (
-    <div>
-      <h3>Profile Settings</h3>
-      <p>Here you can change your profile settings.</p>
-    </div>
-  );
+  return <div>Profile Settings</div>;
 }
 
 export default ProfileSettings;
