@@ -6,7 +6,7 @@ function UserProfile() {
             alt="User"
             className="w-24 h-24 sm:w-36 sm:h-36 rounded-full mx-auto mb-4"
         />
-         <h1 className="text-lg sm:text-xl font-bold text-center">John Doe</h1>
+         <h1 className="ttext-lg md:text-xl sm:text-xl font-bold text-center">John Doe</h1>
          <p className="mt-2 text-sm sm:text-base text-gray-600 text-center">
             Developer at Example Co. Loves to write code and explore new technologies.
          </p>
