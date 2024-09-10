@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
-    axios.get('/data.json')
-      .then(response => {
-        setRecipes(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching the recipes:', error);
-      });
+    fetch('/data.json')
+      .then(response => response.json())
+      .then(data => setRecipes(data.recipes))
+      .catch(error => console.error('Error fetching recipes:', error));
   }, []);
 
   return (
