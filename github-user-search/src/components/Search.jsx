@@ -21,6 +21,7 @@ function Search() {
     } finally {
       setIsLoading(false);
     }
+    
   };
 
   const renderContent = () => {
