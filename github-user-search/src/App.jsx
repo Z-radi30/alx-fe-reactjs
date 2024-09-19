@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
-
+import Search from './components/Search';
 function App() {
   return (
     <Router>
@@ -10,6 +10,7 @@ function App() {
         </header>
         <Routes>
           {/* Add routes here */}
+          <Search />
         </Routes>
       </div>
     </Router>
